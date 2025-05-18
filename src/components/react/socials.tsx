@@ -6,14 +6,25 @@ import { PHOTO_ANIMATION_DURATION } from "../../constant";
 const SOCIAL_ANIMATION_DURATION = PHOTO_ANIMATION_DURATION + 1;
 
 const socialAnimation = () => {
-  gsap.from(".social-container", {
-    opacity: 0,
-    scale: 0,
-    duration: 1,
-    transformOrigin: "top left",
-    ease: "power4",
-    delay: PHOTO_ANIMATION_DURATION,
-  });
+  gsap.fromTo(
+    ".social-container",
+    {
+      opacity: 0,
+      scale: 0,
+      duration: 1,
+      transformOrigin: "top left",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      transformOrigin: "top left",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    }
+  );
 
   gsap.from(".social-text", {
     opacity: 0,
@@ -30,7 +41,7 @@ export const Socials = () => {
   }, []);
 
   return (
-    <div className="social-container h-[15%] bg-[#D9CEBD] rounded-xl p-4 flex items-center justify-around font-medium font-stretch-condensed text-[15px] tracking-tight">
+    <div className="social-container h-[15%] bg-[#D9CEBD] rounded-xl p-4 flex items-center justify-around font-medium font-stretch-condensed text-[15px] tracking-tight opacity-0">
       <div className="social-text">
         <a
           className="hover:text-black/70 transition"

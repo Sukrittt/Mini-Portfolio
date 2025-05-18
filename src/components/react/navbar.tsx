@@ -6,14 +6,25 @@ import { PHOTO_ANIMATION_DURATION } from "../../constant";
 const NAVBAR_ANIMATION_DURATION = PHOTO_ANIMATION_DURATION + 1;
 
 const navbarAnimation = () => {
-  gsap.from(".navbar-container", {
-    opacity: 0,
-    scale: 0,
-    duration: 1,
-    transformOrigin: "bottom",
-    ease: "power4",
-    delay: PHOTO_ANIMATION_DURATION,
-  });
+  gsap.fromTo(
+    ".navbar-container",
+    {
+      opacity: 0,
+      scale: 0,
+      duration: 1,
+      transformOrigin: "bottom",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      transformOrigin: "bottom",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    }
+  );
 
   gsap.fromTo(
     ".nav-logo",
@@ -48,7 +59,7 @@ export const Navbar = () => {
   }, []);
 
   return (
-    <div className="navbar-container bg-[#D9CEBD] h-[70px] w-full flex items-center justify-between rounded-xl px-4 font-stretch-condensed logo-[15px] tracking-tight">
+    <div className="navbar-container opacity-0 bg-[#D9CEBD] h-[70px] w-full flex items-center justify-between rounded-xl px-4 font-stretch-condensed logo-[15px] tracking-tight">
       <span className="nav-logo opacity-0">SUKRIT</span>
 
       <div className="flex items-center gap-x-8">

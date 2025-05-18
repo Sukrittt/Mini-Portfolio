@@ -9,14 +9,25 @@ const ABOUT_ANIMATION_DURATION = PHOTO_ANIMATION_DURATION + 1;
 const aboutAnimation = () => {
   const splitText = new SplitType(".about-text");
 
-  gsap.from(".about-container", {
-    opacity: 0,
-    scale: 0,
-    duration: 1,
-    transformOrigin: "top right",
-    ease: "power4",
-    delay: PHOTO_ANIMATION_DURATION,
-  });
+  gsap.fromTo(
+    ".about-container",
+    {
+      opacity: 0,
+      scale: 0,
+      duration: 1,
+      transformOrigin: "top right",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      transformOrigin: "top right",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    }
+  );
 
   gsap.from(splitText.lines, {
     opacity: 0,
@@ -29,7 +40,7 @@ const aboutAnimation = () => {
   gsap.from(".about", {
     opacity: 0,
     y: 10,
-    delay: ABOUT_ANIMATION_DURATION * 1.25 - 1,
+    delay: ABOUT_ANIMATION_DURATION * 1.25 - 0.5,
   });
 };
 
@@ -39,7 +50,7 @@ export const About = () => {
   }, []);
 
   return (
-    <div className="about-container bg-[#D9CEBD] rounded-xl p-4 relative">
+    <div className="about-container bg-[#D9CEBD] rounded-xl p-4 relative opacity-0">
       <img
         src="/about.svg"
         alt="about"

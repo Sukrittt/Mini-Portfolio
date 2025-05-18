@@ -6,14 +6,25 @@ import { PHOTO_ANIMATION_DURATION } from "../../constant";
 const TAGLINE_ANIMATION_DURATION = PHOTO_ANIMATION_DURATION + 1;
 
 const taglineAnimation = () => {
-  gsap.from(".tagline-container", {
-    opacity: 0,
-    scale: 0,
-    duration: 1,
-    transformOrigin: "bottom right",
-    ease: "power4",
-    delay: PHOTO_ANIMATION_DURATION,
-  });
+  gsap.fromTo(
+    ".tagline-container",
+    {
+      opacity: 0,
+      scale: 0,
+      duration: 1,
+      transformOrigin: "bottom right",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      transformOrigin: "bottom right",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    }
+  );
 
   gsap.from(".tagline-text", {
     opacity: 0,
@@ -25,7 +36,7 @@ const taglineAnimation = () => {
   gsap.from(".airpods", {
     opacity: 0,
     y: 10,
-    delay: TAGLINE_ANIMATION_DURATION * 1.25 - 1,
+    delay: TAGLINE_ANIMATION_DURATION * 1.25 - 0.5,
   });
 };
 
@@ -35,7 +46,7 @@ export const Tagline = () => {
   }, []);
 
   return (
-    <div className="tagline-container col-span-5 bg-[#D9CEBD] rounded-xl p-4 relative">
+    <div className="tagline-container col-span-5 bg-[#D9CEBD] rounded-xl p-4 relative opacity-0">
       <img
         src="/airpords.svg"
         alt="airpods"

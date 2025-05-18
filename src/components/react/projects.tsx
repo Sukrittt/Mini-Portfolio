@@ -6,20 +6,31 @@ import { PHOTO_ANIMATION_DURATION } from "../../constant";
 const PROJECT_ANIMATION_DURATION = PHOTO_ANIMATION_DURATION + 1;
 
 const projectAnimation = () => {
-  gsap.from(".project-container", {
-    opacity: 0,
-    scale: 0,
-    duration: 1,
-    transformOrigin: "left",
-    ease: "power4",
-    delay: PHOTO_ANIMATION_DURATION,
-  });
+  gsap.fromTo(
+    ".project-container",
+    {
+      opacity: 0,
+      scale: 0,
+      duration: 1,
+      transformOrigin: "left",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    },
+    {
+      opacity: 1,
+      scale: 1,
+      duration: 1,
+      transformOrigin: "left",
+      ease: "power4",
+      delay: PHOTO_ANIMATION_DURATION,
+    }
+  );
 
   gsap.from(".project", {
     opacity: 0,
     y: 5,
     ease: "power4.out",
-    delay: PROJECT_ANIMATION_DURATION * 1.25 - 1,
+    delay: PROJECT_ANIMATION_DURATION * 1.25 - 0.5,
   });
 
   gsap.from(".project-title", {
@@ -74,7 +85,7 @@ export const Projects = () => {
   };
 
   return (
-    <div className="project-container h-[85%] bg-[#D9CEBD] rounded-xl p-4 relative">
+    <div className="project-container h-[85%] bg-[#D9CEBD] rounded-xl p-4 relative opacity-0">
       <div className="flex items-center justify-between">
         <span className="project-title text-2xl font-stretch-condensed">
           Projects
